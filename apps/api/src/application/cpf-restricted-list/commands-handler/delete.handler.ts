@@ -1,6 +1,7 @@
-import { NotFoundException } from '@nestjs/common';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
+import { cpfValidation } from '../../../../src/utils/cpfValidation';
 import { DeleteCpfCommand } from '../commands/delete.command';
+import { NotFoundCpfException } from '../exceptions/not-found-cpf.exception';
 import { CpfRestrictedListRepository } from '../repositories/cpf-restricted-list.repository';
 
 @CommandHandler(DeleteCpfCommand)
@@ -11,25 +12,20 @@ export class DeleteCpfCommandHandler
     private readonly cpfRestrictedListRepository: CpfRestrictedListRepository,
   ) {}
 
-  async execute(command: DeleteCpfCommand): Promise<boolean> {
+  async execute(command: DeleteCpfCommand): Promise<any> {
     const { payload } = command;
     const { cpf } = payload;
+
+    cpfValidation(cpf);
 
     const findCpf = await this.cpfRestrictedListRepository.findOne({
       where: { cpf },
     });
 
     if (!findCpf) {
-      throw new NotFoundException('cpf not found');
+      throw new NotFoundCpfException();
     }
 
-    return await this.cpfRestrictedListRepository
-      .delete({ id: findCpf.id })
-      .then(() => {
-        return true;
-      })
-      .catch(() => {
-        return false;
-      });
+    await this.cpfRestrictedListRepository.delete({ id: findCpf.id });
   }
 }

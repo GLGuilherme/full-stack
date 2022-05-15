@@ -1,7 +1,11 @@
-import { NotFoundException } from '@nestjs/common';
+import { HttpStatus, NotFoundException } from '@nestjs/common';
 
 export class NotFoundCpfException extends NotFoundException {
   constructor() {
-    super('CPF não encontrado!');
+    super({
+      status: HttpStatus.NOT_FOUND,
+      type: 'NotFoundCpfException',
+      message: 'CPF not found.',
+    });
   }
 }

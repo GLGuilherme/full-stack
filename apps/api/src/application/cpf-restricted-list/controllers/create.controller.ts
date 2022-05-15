@@ -1,7 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { CommandBus } from '@nestjs/cqrs';
 import { CreateCpfCommand } from '../commands/create.command';
-import { CreateCpfDto } from '../dtos/createCpf.dto';
+import { CreateCpfDto } from '../dtos/create-cpf.dto';
 
 @Controller('cpf')
 export class CreateCpfController {

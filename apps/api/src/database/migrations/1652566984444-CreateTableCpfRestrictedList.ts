@@ -32,23 +32,12 @@ export class CreateTableCpfRestrictedList1652566984444
             isNullable: false,
             default: 'now()',
           },
-          {
-            name: 'updated_at',
-            type: 'timestamp',
-            isNullable: false,
-            default: 'now()',
-          },
-          {
-            name: 'deleted_at',
-            type: 'timestamp',
-            isNullable: true,
-          },
         ],
       }),
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('cpf-restricted-list');
+    await queryRunner.dropTable('cpf_restricted_list');
   }
 }

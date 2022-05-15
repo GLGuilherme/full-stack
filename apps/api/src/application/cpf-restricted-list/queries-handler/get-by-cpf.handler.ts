@@ -1,5 +1,5 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
-import { cpfValidation } from 'src/utils/cpfValidation';
+import { cpfValidation } from '../../../utils/cpfValidation';
 import { CpfRestrictedList } from '../entities/cpf-restricted-list.entity';
 import { NotFoundCpfException } from '../exceptions/not-found-cpf.exception';
 import { GetByCpfQuery } from '../queries/get-by-cpf.query';
@@ -11,7 +11,10 @@ export class GetByCpfQueryHandler implements IQueryHandler<GetByCpfQuery> {
     private readonly cpfRestrictedListRepository: CpfRestrictedListRepository,
   ) {}
 
-  async execute(query: GetByCpfQuery): Promise<CpfRestrictedList> {
+  async execute(query: GetByCpfQuery): Promise<{
+    cpf: CpfRestrictedList['cpf'];
+    createdAt: CpfRestrictedList['createdAt'];
+  }> {
     const { payload } = query;
     const { cpf } = payload;
 
@@ -25,6 +28,9 @@ export class GetByCpfQueryHandler implements IQueryHandler<GetByCpfQuery> {
       throw new NotFoundCpfException();
     }
 
-    return findCpf;
+    return {
+      cpf: findCpf.cpf,
+      createdAt: findCpf.createdAt,
+    };
   }
 }

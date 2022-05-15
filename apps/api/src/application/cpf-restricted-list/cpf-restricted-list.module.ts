@@ -4,8 +4,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CpfRestrictedListRepository } from './repositories/cpf-restricted-list.repository';
 import { CreateCpfController } from './controllers/create.controller';
 import { CreateCpfCommandHandler } from './commands-handler/create.handler';
-import { UpdateCpfController } from './controllers/update.controller';
-import { UpdateCpfCommandHandler } from './commands-handler/update.handler';
 import { DeleteCpfController } from './controllers/delete.controller';
 import { DeleteCpfCommandHandler } from './commands-handler/delete.handler';
 import { GetByCpfController } from './controllers/get-by-cpf.controller';
@@ -20,14 +18,12 @@ import { GetQueryHandler } from './queries-handler/get.handler';
   ],
   controllers: [
     CreateCpfController,
-    UpdateCpfController,
     DeleteCpfController,
     GetByCpfController,
     GetController,
   ],
   providers: [
     CreateCpfCommandHandler,
-    UpdateCpfCommandHandler,
     DeleteCpfCommandHandler,
     GetByCpfQueryHandler,
     GetQueryHandler,
