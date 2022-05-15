@@ -1,0 +1,19 @@
+{
+  "name": "full-stack",
+  "description": "Teste para Full Stack MaxMilhas",
+  "authors": "Gabriel Lopes",
+  "version": "1.0.0",
+  "private": true,
+  "main": "pathToMain",
+  "license": "MIT",
+  "workspaces": {
+    "packages": [
+      "apps/*"
+    ]
+  },
+  "scripts": {
+    "api": "yarn workspace @full-stack/api",
+    "frontend": "yarn workspace @full-stack/frontend"
+  },
+  "dependencies": {}
+}
