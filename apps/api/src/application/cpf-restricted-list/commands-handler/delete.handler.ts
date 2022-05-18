@@ -27,5 +27,7 @@ export class DeleteCpfCommandHandler
     }
 
     await this.cpfRestrictedListRepository.delete({ id: findCpf.id });
+
+    return {};
   }
 }

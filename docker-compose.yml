@@ -18,8 +18,10 @@ services:
 
     api:
         container_name: full-stack-api
-        image: full-stack-api-dev:1.0.0
-        build: .
+        image: full-stack/api
+        build: 
+          context: ./apps/api
+          dockerfile: Dockerfile
         command: yarn api start:dev
         ports:
             - 3000:3000
@@ -27,6 +29,22 @@ services:
           - db
         volumes:
             - .:/usr/app
+        networks:
+          - api-network
+
+    frontend:
+        container_name: full-stack-frontend
+        image: full-stack/frontend
+        build: 
+          context: ./apps/frontend
+          dockerfile: Dockerfile
+        command: yarn frontend start
+        ports:
+          - 3001:3001
+        depends_on:
+          - api
+        volumes:
+          - .:/usr/app
         networks:
           - api-network
           
