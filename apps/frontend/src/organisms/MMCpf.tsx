@@ -63,7 +63,7 @@ export const MMCpf: React.FC<MMCpfInterface> = () => {
       <Box
         width={800}
         height={600}
-        bgcolor={theme.palette.grey[100]}
+        bgcolor={theme.palette.grey[200]}
         borderRadius={5}
       >
         <Box height="100%">

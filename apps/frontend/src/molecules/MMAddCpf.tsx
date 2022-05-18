@@ -49,11 +49,11 @@ export const MMAddCpf: React.FC<MMAddCpfInterface> = ({ error, onChange }) => {
       display="flex"
       flex={1}
       justifyContent="space-between"
-      alignItems="flex-start"
+      alignItems="center"
       width={400}
       height={50}
     >
-      <Box flex={1} mr={2}>
+      <Box flex={1} mr={2} height="50">
         <MMSearchField
           label="Search CPF"
           onChange={handleChangeCpf}

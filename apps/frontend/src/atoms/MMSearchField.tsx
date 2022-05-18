@@ -1,6 +1,7 @@
 import React from "react";
 import { Box } from "@mui/system";
 import { TextField } from "@mui/material";
+import { MMHelperText } from "./MMHelperText";
 
 interface MMSearchFieldInterface {
   label: string;
@@ -31,10 +32,11 @@ export const MMSearchField: React.FC<MMSearchFieldInterface> = ({
       <TextField
         fullWidth
         label={label}
-        helperText={helperText}
         error={error}
         onChange={(e) => handleChangeThrottle(e.target.value, 300)}
       />
+
+      {helperText && <MMHelperText text={helperText} />}
     </Box>
   );
 };

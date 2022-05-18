@@ -1,5 +1,5 @@
 import React from "react";
-import { Box, BoxProps } from "@mui/material";
+import { Box, BoxProps, useTheme } from "@mui/material";
 import styled from "@emotion/styled";
 
 interface MMBoxScrollBarInterface {
@@ -10,6 +10,8 @@ export const MMBoxScrollBar: React.FC<MMBoxScrollBarInterface & BoxProps> = ({
   children,
   ...props
 }) => {
+  const theme = useTheme();
+
   const StdBox = styled(Box)`
     ::-webkit-scrollbar {
       width: 7px;
@@ -22,7 +24,7 @@ export const MMBoxScrollBar: React.FC<MMBoxScrollBarInterface & BoxProps> = ({
     ::-webkit-scrollbar-thumb:vertical {
       height: 5px;
       border-radius: 20px;
-      background-color: #3333;
+      background-color: ${theme.palette.grey[400]};
     }
   `;
   return <StdBox {...props}>{children}</StdBox>;
