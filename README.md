@@ -31,7 +31,7 @@
 
 - `yarn` para instalar todas as dependências do projeto.
 - `docker-compose up` para executar a api, o banco de dados e o frontend.
-- `yarn api migration:run` para executar as migrations e criar as tabelas no banco de dados.
+- `yarn api migration:run` para executar as migrations e criar as tabelas no banco de dados. Caso o comando `docker-compose up` já tenha criado as tabelas, este comando não será mais necessário.
 
 ## Como testar?
 
