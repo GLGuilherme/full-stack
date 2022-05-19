@@ -1,5 +1,5 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
-import { CpfRestrictedList } from '../entities/cpf-restricted-list.entity';
+import { GetDto } from '../dtos/get.dto';
 import { GetQuery } from '../queries/get.query';
 import { CpfRestrictedListRepository } from '../repositories/cpf-restricted-list.repository';
 
@@ -9,12 +9,7 @@ export class GetQueryHandler implements IQueryHandler<GetQuery> {
     private readonly cpfRestrictedListRepository: CpfRestrictedListRepository,
   ) {}
 
-  async execute(query: GetQuery): Promise<{
-    items: CpfRestrictedList[];
-    page: number;
-    perPage: number;
-    total: number;
-  }> {
+  async execute(query: GetQuery): Promise<GetDto> {
     const { payload } = query;
     const { page, perPage } = payload;
 

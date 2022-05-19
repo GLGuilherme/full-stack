@@ -17,8 +17,9 @@ interface MMAddCpfInterface {
 
 export const MMAddCpf: React.FC<MMAddCpfInterface> = ({ error, onChange }) => {
   const queryClient = useQueryClient();
-  const [cpf, setCpf] = useState<string>();
   const { enqueueSnackbar } = useSnackbar();
+
+  const [cpf, setCpf] = useState<string>();
 
   const { mutate: addCpf, isLoading } = useMutation(
     () => http("cpf", { method: "POST", body: { cpf } }),

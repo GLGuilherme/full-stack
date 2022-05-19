@@ -41,11 +41,7 @@ export const MMCpf: React.FC<MMCpfInterface> = () => {
       return [];
     }
 
-    if (cpfList?.items?.length) {
-      return cpfList.items;
-    } else {
-      return [cpfList];
-    }
+    return cpfList?.items || [cpfList];
   }, [cpfList]);
 
   return (

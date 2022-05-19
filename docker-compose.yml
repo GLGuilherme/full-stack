@@ -14,7 +14,7 @@ services:
       volumes:
         - .:/usr/app
       networks:
-        - api-network
+        - full-stack-network
 
     api:
         container_name: full-stack-api
@@ -30,7 +30,7 @@ services:
         volumes:
             - .:/usr/app
         networks:
-          - api-network
+          - full-stack-network
 
     frontend:
         container_name: full-stack-frontend
@@ -46,7 +46,7 @@ services:
         volumes:
           - .:/usr/app
         networks:
-          - api-network
+          - full-stack-network
           
 networks:
-  api-network:
+  full-stack-network:
